@@ -18,9 +18,13 @@ struct Mesh {
     indices: Handle<Buffer>,
 }
 
+struct GPUInfo {
+    sphere: Mesh,
+}
 pub struct Renderer {
     ctx: *mut dashi::Context,
     sphere: Mesh,
+    cameras: Vec<remouillage::utils::camera::Camera>,
 }
 
 const M_PI: f32 = std::f32::consts::PI;
@@ -96,6 +100,7 @@ impl Renderer {
                 vertices: vert_buff,
                 indices: index_buff,
             },
+            cameras: Vec::new(),
         }
     }
 }
